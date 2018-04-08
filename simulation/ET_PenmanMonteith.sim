@@ -1,0 +1,91 @@
+import static oms3.SimBuilder.instance as OMS3
+import static oms3.SimBuilder.*
+def home = oms_prj
+
+startDate= "2016-06-01 00:00"
+def endDate= "2016-08-01 00:00"
+
+OMS3.sim {
+     resource "$oms_prj/lib"
+
+ model(while:"reader_data_tempmax.doProcess") {
+   components {
+   		"reader_data_tempmax"           "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+   		"reader_data_tempmin"           "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_wind"             	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_humidity"          "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_radiation"         "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_pressure"          "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_soilflux"          "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        //"reader_data_zcentroid"         "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        //"reader_data_press"           "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "PMEtpDaily"                    "etp.OmsPenmanMonteithETDaily"     
+        "writer_etp"                  	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"      
+   }
+   parameter{  
+   		// READER     
+        "reader_data_tempmax.file"         "${home}/data/AirTemperature.csv"
+        "reader_data_tempmax.idfield"      "ID"  
+        "reader_data_tempmax.tStart"       "${startDate}"
+        "reader_data_tempmax.tEnd"         "${endDate}"
+        "reader_data_tempmax.tTimestep"    60*24 //or 60 hourly
+        "reader_data_tempmax.fileNovalue"  "-9999.0"
+        
+        "reader_data_tempmin.file"          "${home}/data/AirTemperature.csv"
+        "reader_data_tempmin.idfield"       "ID"
+        "reader_data_tempmin.tStart"        "${startDate}"
+        "reader_data_tempmin.tEnd"          "${endDate}"
+        "reader_data_tempmin.tTimestep"     60 *24
+        "reader_data_tempmin.fileNovalue"   "-9999.0"
+        
+        "reader_data_wind.file"         	"${home}/data/Wind.csv"
+        "reader_data_wind.idfield"      	"ID"  
+        "reader_data_wind.tStart"       	"${startDate}"
+        "reader_data_wind.tEnd"         	"${endDate}"
+        "reader_data_wind.tTimestep"    	60*24
+        "reader_data_wind.fileNovalue"  	"-9999.0"
+        
+        "reader_data_humidity.file"         "${home}/data/RHumidity.csv"
+        "reader_data_humidity.idfield"      "ID"  
+        "reader_data_humidity.tStart"       "${startDate}"
+        "reader_data_humidity.tEnd"         "${endDate}"
+        "reader_data_humidity.tTimestep"    60*24
+        "reader_data_humidity.fileNovalue"  "-9999.0"
+        "reader_data_radiation.file"        "${home}/data/netRadiation.csv" 
+        "reader_data_radiation.idfield"     "ID"
+        "reader_data_radiation.tStart"      "${startDate}"
+        "reader_data_radiation.tEnd"        "${endDate}"
+        "reader_data_radiation.tTimestep"   60*24
+        "reader_data_radiation.fileNovalue" "-9999.0"
+        "reader_data_pressure.file"         "${home}/data/Pressure.csv"
+        "reader_data_pressure.idfield"      "ID"  
+        "reader_data_pressure.tStart"       "${startDate}"
+        "reader_data_pressure.tEnd"         "${endDate}"
+        "reader_data_pressure.tTimestep"    60*24
+        "reader_data_pressure.fileNovalue"  "-9999.0"
+        "reader_data_soilflux.file"         "${home}/data/SoilFlux.csv"
+        "reader_data_soilflux.idfield"      "ID"  
+        "reader_data_soilflux.tStart"       "${startDate}"
+        "reader_data_soilflux.tEnd"         "${endDate}"
+        "reader_data_soilflux.tTimestep"    60*24
+        "reader_data_soilflux.fileNovalue"  "-9999.0"
+        
+        // WRITER
+        "writer_etp.file"        		"${home}/output/ET_penman.csv" 
+        "writer_etp.tStart"       		"${startDate}"
+        "writer_etp.tTimestep"   		60*24
+        }
+        connect {
+        	"reader_data_tempmax.outData"		"PMEtpDaily.inMaxTemp"
+        	"reader_data_tempmin.outData"  		"PMEtpDaily.inMinTemp"
+        	"reader_data_wind.outData"  		"PMEtpDaily.inWind"
+        	"reader_data_humidity.outData"  	"PMEtpDaily.inRelativeHumidity"
+        	"reader_data_radiation.outData" 	"PMEtpDaily.inNetradiation"
+        	"reader_data_pressure.outData"   	"PMEtpDaily.inPressure"
+        	"reader_data_soilflux.outData"   	"PMEtpDaily.inSoilFlux"
+        	
+        	
+        	"PMEtpDaily.outPMEtp"  				"writer_etp.inData"
+        	}
+        	}
+        	}

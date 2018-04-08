@@ -1,0 +1,105 @@
+import static oms3.SimBuilder.instance as OMS3
+import static oms3.SimBuilder.*
+def home = oms_prj
+
+def startDate= "2016-06-01 00:00"
+def endDate= "2016-08-01 00:00"
+def ID = 1
+
+OMS3.sim {
+     resource "$oms_prj/lib"
+
+ model(while:"reader_data_temperature.doProcess") {
+   components {
+   		"reader_data_temperature"           "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_wind"             		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_humidity"          	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_SWradiation"         	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_LWradiation"         	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_pressure"          	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+        "reader_data_LAI"          			"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+       
+        "SoET"                    			"etp.OmsSchymanskiOrET"   
+        "writer_et"                  		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"  
+        "writer_lt"                  		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"      
+   }
+   parameter{  
+   		// READER     
+        "reader_data_temperature.file"          "${home}/data/AirTemperature.csv"
+        "reader_data_temperature.idfield"       "ID"  
+        "reader_data_temperature.tStart"        "${startDate}"
+        "reader_data_temperature.tEnd"			"${endDate}"
+        "reader_data_temperature.tTimestep"		60*24 //or 60 hourly
+        "reader_data_temperature.fileNovalue"   "-9999.0"
+        
+        "SoET.leafSide"							2
+        "SoET.leafLength"						0.05
+        "SoET.leafEmissivity"					1.0
+        "SoET.doHourly"             			false
+                   
+        "reader_data_wind.file"         		"${home}/data/Wind.csv"
+        "reader_data_wind.idfield"				"ID"  
+        "reader_data_wind.tStart"       		"${startDate}"
+        "reader_data_wind.tEnd"         		"${endDate}"
+        "reader_data_wind.tTimestep"    		60*24
+        "reader_data_wind.fileNovalue"  		"-9999.0"
+        
+        "reader_data_humidity.file"         	"${home}/data/RHumidity.csv"
+        "reader_data_humidity.idfield"      	"ID"  
+        "reader_data_humidity.tStart"       	"${startDate}"
+        
+        "reader_data_humidity.tEnd"         	"${endDate}"
+        "reader_data_humidity.tTimestep"    	60*24
+        "reader_data_humidity.fileNovalue"  	"-9999.0"
+
+        "reader_data_SWradiation.file"        	"${home}/data/SWrad.csv" 
+        "reader_data_SWradiation.idfield"     	"ID"
+        "reader_data_SWradiation.tStart"      	"${startDate}"
+        "reader_data_SWradiation.tEnd"        	"${endDate}"
+        "reader_data_SWradiation.tTimestep"   	60*24
+        "reader_data_SWradiation.fileNovalue" 	"-9999.0"
+
+		"reader_data_LWradiation.file"        	"${home}/data/LWrad.csv" 
+        "reader_data_LWradiation.idfield"     	"ID"
+        "reader_data_LWradiation.tStart"      	"${startDate}"
+        "reader_data_LWradiation.tEnd"        	"${endDate}"
+        "reader_data_LWradiation.tTimestep"   	60*24
+        "reader_data_LWradiation.fileNovalue" 	"-9999.0"
+        
+        "reader_data_pressure.file"         	"${home}/data/Pressure.csv"
+        "reader_data_pressure.idfield"      	"ID"  
+        "reader_data_pressure.tStart"       	"${startDate}"
+        "reader_data_pressure.tEnd"         	"${endDate}"
+        "reader_data_pressure.tTimestep"    	60*24
+        "reader_data_pressure.fileNovalue"  	"-9999.0"
+        
+        "reader_data_LAI.file"         			"${home}/data/LAI.csv"
+        "reader_data_LAI.idfield"      			"ID"  
+        "reader_data_LAI.tStart"       			"${startDate}"
+        "reader_data_LAI.tEnd"         			"${endDate}"
+        "reader_data_LAI.tTimestep"    			60*24
+        "reader_data_LAI.fileNovalue"  			"-9999.0"
+        
+        // WRITER
+        "writer_et.file"        				"${home}/output/ET_So_1.csv" 
+        "writer_et.tStart"       				"${startDate}"
+        "writer_et.tTimestep"   				60*24
+        
+        "writer_lt.file"        				"${home}/output/LT_So_1.csv" 
+        "writer_lt.tStart"       				"${startDate}"
+        "writer_lt.tTimestep"   				60*24
+        }
+        connect {
+        	"reader_data_temperature.outData"	"SoET.inAirTemperature"
+        	"reader_data_wind.outData"  		"SoET.inWindVelocity"
+        	"reader_data_humidity.outData"  	"SoET.inRelativeHumidity"
+        	"reader_data_SWradiation.outData" 	"SoET.inShortWaveRadiation"
+        	"reader_data_LWradiation.outData" 	"SoET.inLongWaveRadiation"
+        	"reader_data_pressure.outData"   	"SoET.inAtmosphericPressure"
+        	"reader_data_LAI.outData"   		"SoET.inLeafAreaIndex"
+        	
+        	"SoET.outSOEt"  					"writer_et.inData"
+        	"SoET.outSOLT"  					"writer_lt.inData"
+        	}
+        	}
+        	}
