@@ -2,8 +2,8 @@ import static oms3.SimBuilder.instance as OMS3
 import static oms3.SimBuilder.*
 def home = oms_prj
 
-def startDate= "2016-06-01 00:00"
-def endDate= "2016-08-01 00:00"
+def startDate= "2016-01-01 00:00"
+def endDate= "2016-12-31 23:00"
 def ID = 1
 
 OMS3.sim {
@@ -18,7 +18,6 @@ OMS3.sim {
         "reader_data_LWradiation"         	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
         "reader_data_pressure"          	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
         "reader_data_LAI"          			"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
-       
         "SoET"                    			"etp.OmsSchymanskiOrET"   
         "writer_et"                  		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"  
         "writer_lt"                  		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"      
@@ -31,10 +30,7 @@ OMS3.sim {
         "reader_data_temperature.tEnd"			"${endDate}"
         "reader_data_temperature.tTimestep"		60*24 //or 60 hourly
         "reader_data_temperature.fileNovalue"   "-9999.0"
-        
-        "SoET.leafSide"							2
-        "SoET.leafLength"						0.05
-        "SoET.leafEmissivity"					1.0
+      
         "SoET.doHourly"             			false
                    
         "reader_data_wind.file"         		"${home}/data/Wind.csv"

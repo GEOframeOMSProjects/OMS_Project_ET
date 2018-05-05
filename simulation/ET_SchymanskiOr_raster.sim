@@ -42,10 +42,10 @@ resource "$oms_prj/lib"
    	}
    	connect {
    		"readerAirTemperature.outRaster"	"SoET.inAirTemperatureGrid"
-   		"readerShortWave.outRaster"  		"SoET.inWindVelocityGrid"
-   		"readerLongWave.outRaster"  		"SoET.inRelativeHumidityGrid"
-   		"readerHumidity.outRaster" 			"SoET.inShortWaveRadiationGrid"
-   		"readerWind.outRaster" 				"SoET.inLongWaveRadiationGrid"
+   		"readerShortWave.outRaster"  		"SoET.inShortWaveRadiationGrid"
+   		"readerLongWave.outRaster"  		"SoET.inLongWaveRadiationGrid"
+   		"readerHumidity.outRaster" 			"SoET.inRelativeHumidityGrid"
+   		"readerWind.outRaster" 				"SoET.inWindVelocityGrid"
    		"readerPressure.outRaster"   		"SoET.inAtmosphericPressureGrid"
    		"readerLeafAreaIndex.outRaster"		"SoET.inLeafAreaIndexGrid"       	
    		
