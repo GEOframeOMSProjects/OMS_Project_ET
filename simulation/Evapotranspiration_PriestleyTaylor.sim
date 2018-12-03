@@ -1,46 +1,62 @@
 import static oms3.SimBuilder.instance as OMS3
 def home = oms_prj
-def startDate	=	"2016-06-01 00:00"
-def endDate		=	"2016-08-01 00:00"
 
+//def startDate	=	"2009-10-02 01:00"
+//def endDate		=	"2016-01-11 07:00"
+//def site = "Mazia_B2_irr"
+
+def startDate	=	"2013-01-01 01:00"
+def endDate		=	"2016-01-11 07:00"
+def site = "Caldaro"
+
+def timestep = 60
 OMS3.sim {
 	resource "$oms_prj/lib"    
 	model(while:"reader_data_temp.doProcess") {
 		components {
 			"reader_data_temp"            		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
 			"reader_data_rad"             		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+			"readerPressure"             		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
 			"PTEtp"                       		"etpPointCase.OmsPriestleyTaylorEtpModel"     
 			"writer_etp"						"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"      			         
 			}  
 			parameter{        
-				"reader_data_temp.file"			"${home}/data/DataPlot/AirTemperature.csv"
-				"reader_data_temp.idfield"      "ID"  
+				"reader_data_temp.file"			"${home}/data/${site}/${site}_Temp.csv"
+				"reader_data_temp.idfield"      "val"  
 				"reader_data_temp.tStart"		"${startDate}"
 				"reader_data_temp.tEnd"			"${endDate}"
-				"reader_data_temp.tTimestep"	60*24
+				"reader_data_temp.tTimestep"	"${timestep}"
 				"reader_data_temp.fileNovalue"	"-9999"        
 				
-				"reader_data_rad.file"          "${home}/data/DataPlot/netRadiation.csv" 
-				"reader_data_rad.idfield"      	"ID"
+				"reader_data_rad.file"          "${home}/data/${site}/${site}_Net.csv" 
+				"reader_data_rad.idfield"      	"val"
 				"reader_data_rad.tStart"        "${startDate}"
 				"reader_data_rad.tEnd"			"${endDate}"
-				"reader_data_rad.tTimestep"		60*24
-				"reader_data_rad.fileNovalue"	"-9999"                               
+				"reader_data_rad.tTimestep"		"${timestep}"
+				"reader_data_rad.fileNovalue"	"-9999"	
+				
+				"readerPressure.file"         "${home}/data/${site}/${site}_Pres.csv"
+				"readerPressure.idfield"      "val"  
+				"readerPressure.tStart"       "${startDate}"
+				"readerPressure.tEnd"         "${endDate}"
+				"readerPressure.tTimestep"    "${timestep}"
+				"readerPressure.fileNovalue"  "-9999.0"                               
 				
 				"PTEtp.defaultPressure"			101.3
-				"PTEtp.pAlpha"					1.06
-				"PTEtp.pGmorn"					0.35 
-				"PTEtp.pGnight"					0.75
+				"PTEtp.pAlpha"					1.26
+				"PTEtp.pGmorn"					0.0 
+				"PTEtp.pGnight"					0.0
 				"PTEtp.doHourly"				true            
 				
 				"PTEtp.tStartDate"				"${startDate}"             
-				"writer_etp.file"				"${home}/output/Evapotraspirazione_Priestley_Taylor.csv" 
+				"writer_etp.file"				"${home}/output/Evapotraspirazione_Priestley_Taylor_${site}.csv" 
 				"writer_etp.tStart"				"${startDate}"
-				"writer_etp.tTimestep"			60*24
+				"writer_etp.tTimestep"			"${timestep}"
 				}
 				connect {                
 					"reader_data_temp.outData"	"PTEtp.inTemp"
 					"reader_data_rad.outData"	"PTEtp.inNetradiation"
+					"readerPressure.outData"	"PTEtp.inPressure"	
 					"PTEtp.outPTEtp"			"writer_etp.inData"
 					}					
 			}
