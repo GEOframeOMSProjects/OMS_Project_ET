@@ -1,0 +1,225 @@
+************************************************
+*          Luca Calibration Summary            *
+************************************************
+
+# Rounds = 1
+# Steps = 1
+
+Input Information
+	Model Executable: null
+	Parameter File Name = null
+	penmanMonteithFao.cropCoefficient = 1.0
+	penmanMonteithFao.waterWiltingPoint = 0.15
+	penmanMonteithFao.waterFieldCapacity = 0.27
+	penmanMonteithFao.rootsDepth = 0.75
+	penmanMonteithFao.depletionFraction = 0.55
+	penmanMonteithFao.tStartDate = 2015-07-21 00:00
+	penmanMonteithFao.temporalStep = 60
+	penmanMonteithFao.defaultAtmosphericPressure = 101.3
+	penmanMonteithFao.doHourly = true
+	readerAirTemperature.file = /home/drugo/Sim/ETP/data/Mazia_Temp.csv
+	readerAirTemperature.idfield = val
+	readerAirTemperature.tStart = 2015-07-21 00:00
+	readerAirTemperature.tEnd = 2015-07-21 23:00
+	readerAirTemperature.tTimestep = 60
+	readerAirTemperature.fileNovalue = -9999.0
+	readerWindVelocity.file = /home/drugo/Sim/ETP/data/Mazia_Wind.csv
+	readerWindVelocity.idfield = val
+	readerWindVelocity.tStart = 2015-07-21 00:00
+	readerWindVelocity.tEnd = 2015-07-21 23:00
+	readerWindVelocity.tTimestep = 60
+	readerWindVelocity.fileNovalue = -9999.0
+	readerRelativeHumidity.file = /home/drugo/Sim/ETP/data/Mazia_RH.csv
+	readerRelativeHumidity.idfield = val
+	readerRelativeHumidity.tStart = 2015-07-21 00:00
+	readerRelativeHumidity.tEnd = 2015-07-21 23:00
+	readerRelativeHumidity.tTimestep = 60
+	readerRelativeHumidity.fileNovalue = -9999.0
+	readerNetRadiation.file = /home/drugo/Sim/ETP/data/Mazia_Net.csv
+	readerNetRadiation.idfield = val
+	readerNetRadiation.tStart = 2015-07-21 00:00
+	readerNetRadiation.tEnd = 2015-07-21 23:00
+	readerNetRadiation.tTimestep = 60
+	readerNetRadiation.fileNovalue = -9999.0
+	readerAtmosphericPressure.file = /home/drugo/Sim/ETP/data/Mazia_Pres.csv
+	readerAtmosphericPressure.idfield = val
+	readerAtmosphericPressure.tStart = 2015-07-21 00:00
+	readerAtmosphericPressure.tEnd = 2015-07-21 23:00
+	readerAtmosphericPressure.tTimestep = 60
+	readerAtmosphericPressure.fileNovalue = -9999.0
+	readerSoilHeatFlux.file = /home/drugo/Sim/ETP/data/Mazia_GHF.csv
+	readerSoilHeatFlux.idfield = val
+	readerSoilHeatFlux.tStart = 2015-07-21 00:00
+	readerSoilHeatFlux.tEnd = 2015-07-21 23:00
+	readerSoilHeatFlux.tTimestep = 60
+	readerSoilHeatFlux.fileNovalue = -9999.0
+	readerSoilMosture.file = /home/drugo/Sim/ETP/data/Mazia_SWC.csv
+	readerSoilMosture.idfield = val
+	readerSoilMosture.tStart = 2015-07-21 00:00
+	readerSoilMosture.tEnd = 2015-07-21 23:00
+	readerSoilMosture.tTimestep = 60
+	readerSoilMosture.fileNovalue = -9999.0
+	writerEvapotranspirationFAO.file = /home/drugo/Sim/ETP/output/Mazia_ET_FAO.csv
+	writerEvapotranspirationFAO.tStart = 2015-07-21 00:00
+	writerEvapotranspirationFAO.tTimestep = 60
+	writerLatentHeatFAO.file = /home/drugo/Sim/ETP/output/Mazia_latentHeat_FAO.csv
+	writerLatentHeatFAO.tStart = 2015-07-21 00:00
+	writerLatentHeatFAO.tTimestep = 60
+
+Model Run Period  : 	July 21,2015 - July 21,2015
+Calibration Period: 	July 21,2015 - July 21,2015
+
+
+Output Information
+	Output Folder: /home/drugo/Sim/ETP/./output/EFC-luca_ET_FAO/out
+
+-------------------------------
+Initial Setup for Step 1
+-------------------------------
+
+>>> Parameter Name: penmanMonteithFao_cropCoefficient
+
+  mean  was used for calibration.
+  Lower Bound = 0.7		 Actual Lower Bound 0.6999999999999993
+  Upper Bound = 1.5		 Actual Upper Bound 1.5
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	1.000000		true
+	Mean	1.0
+	Initial Parameter OF	87.44021723197761
+
+>>> Parameter Name: penmanMonteithFao_waterWiltingPoint
+
+  mean  was used for calibration.
+  Lower Bound = 0.05		 Actual Lower Bound 0.05000000000000071
+  Upper Bound = 0.35		 Actual Upper Bound 0.34999999999999964
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.150000		true
+	Mean	0.15000000000000036
+	Initial Parameter OF	87.44021723197761
+
+>>> Parameter Name: penmanMonteithFao_waterFieldCapacity
+
+  mean  was used for calibration.
+  Lower Bound = 0.2		 Actual Lower Bound 0.1999999999999993
+  Upper Bound = 1.0		 Actual Upper Bound 1.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.270000		true
+	Mean	0.2699999999999996
+	Initial Parameter OF	87.44021723197761
+
+>>> Parameter Name: penmanMonteithFao_rootsDepth
+
+  mean  was used for calibration.
+  Lower Bound = 0.4		 Actual Lower Bound 0.40000000000000036
+  Upper Bound = 1.5		 Actual Upper Bound 1.5
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.750000		true
+	Mean	0.75
+	Initial Parameter OF	87.44021723197761
+
+>>> Parameter Name: penmanMonteithFao_depletionFraction
+
+  mean  was used for calibration.
+  Lower Bound = 0.0		 Actual Lower Bound 0.0
+  Upper Bound = 1.0		 Actual Upper Bound 1.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.550000		true
+	Mean	0.5500000000000007
+	Initial Parameter OF	87.44021723197761
+
+>>> SCE Control Parameter Information
+	Number of complexes in the initial population: 2
+	Number of points in each complex: 11
+	Number of points in a sub-complex: 6
+	Number of evolution steps before shuffling: 11
+	Mininum number of complexes required: 1
+	Maximum number of model executions: 3
+	Shuffling loops in which the objective function value must change by given % before optimization is terminated: 5
+	Percentage for the objective function value: 0.01%
+
+>>> Objective Function (OF) Information
+	The number of objective functions: 1
+	-- OF #1 with weight = 1.0
+		The objective function is: MINIMIZED
+		Objective Function Type: rmse 
+		Time Step: raw
+		Period: Feb to Jan
+		Simulated Variable: value_1
+		Observed Variable: val_1
+
+
+
+********************************************
+ Calibrated Parameter Values
+********************************************
+
+
+-------------------------------
+Round 1 Step 1
+-------------------------------
+
+Objective Function Values for round 1 = 87.44021723197761
+>>> Parameter Name: penmanMonteithFao_cropCoefficient
+
+Lower Bound = 0.7
+Upper Bound = 1.5
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		1.000000
+	Mean			1.0
+>>> Parameter Name: penmanMonteithFao_waterWiltingPoint
+
+Lower Bound = 0.05
+Upper Bound = 0.35
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.150000
+	Mean			0.15000000000000036
+>>> Parameter Name: penmanMonteithFao_waterFieldCapacity
+
+Lower Bound = 0.2
+Upper Bound = 1.0
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.270000
+	Mean			0.2699999999999996
+>>> Parameter Name: penmanMonteithFao_rootsDepth
+
+Lower Bound = 0.4
+Upper Bound = 1.5
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.750000
+	Mean			0.75
+>>> Parameter Name: penmanMonteithFao_depletionFraction
+
+Lower Bound = 0.0
+Upper Bound = 1.0
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.550000
+	Mean			0.5500000000000007
+************************************************
+*  DONE.
+************************************************
+

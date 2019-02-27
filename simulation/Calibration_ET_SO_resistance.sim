@@ -1,0 +1,244 @@
+import static oms3.SimBuilder.instance as OMS3
+import static oms3.SimBuilder.*
+
+def home = oms_prj
+
+def startDate = "2015-07-21 00:00"
+def endDate = "2015-07-21 23:00"
+def site = "Mazia"
+def timestep = 60
+luca = OMS3.luca_run(name:"EFC-luca_ET_SO_Stress",	 {
+		outputstrategy(dir: "./output/", scheme:SIMPLE)
+		model(while:"readerAirTemperature.doProcess") {
+			components {
+				"readerDem"										"org.jgrasstools.gears.io.rasterreader.OmsRasterReader"     
+				"readerAirTemperature"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+				"readerWindVelocity"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+				"readerRelativeHumidity"						"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+				"readerShortWaveDirectRadiation"				"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+				"readerShortWaveDiffuseRadiation"				"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+				"readerLongWaveRadiation"						"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+				"readerAtmosphericPressure"						"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+				"readerLeafAreaIndex"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"	
+				"readerSoilHeatFlux"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"	
+				"readerSoilMosture"	          					"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"	
+				"readerCentroids"								"org.jgrasstools.gears.io.shapefile.OmsShapefileFeatureReader"		       
+				"Transpiration"									"etpPointCase.OmsTranspiration"   		   
+				"Resistance"	                    			"etpPointCase.OmsResistance"   
+				
+				"writerLatentHeat"								"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"  
+				"writerLatentHeatShade"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"  
+				"writerTranspiration"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"  
+				"writerSensibleHeat"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"  
+				"writerSensibleHeatShade"						"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"  
+				"writerLeafTemperature"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter" 
+				"writerLeafTemperatureShade"					"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter" 
+				"writerCanopy"									"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"      
+				"writerRadiation"								"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"           
+				"writerRadiationShade"							"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"
+				}
+				parameter{				
+					// PARAMETERS
+					"Transpiration.doHourly"					true    
+					//"Transpiration.typeOfTerrainCover"		"FlatSurface"
+					"Transpiration.typeOfTerrainCover"			"Grassland"
+					//"Transpiration.typeOfTerrainCover"		"MultiLayersCanopy"
+
+        	    	"Transpiration.temporalStep"				"${timestep}"
+					"Transpiration.doFullPrint"					true   	// Print all the output  
+                                                      			// if false print only transpiration and latent heat
+					"Transpiration.tStartDate"					"${startDate}"   
+					"readerDem.file"							"${home}/data/dem.tif"	    
+					"readerCentroids.file"						"${home}/data/Stations.shp"
+					"Transpiration.idCentroids"            		"id"
+					"Transpiration.centroidElevation"			"Elevation"
+					"Resistance.idCentroids"            		"id"
+					"Resistance.centroidElevation"				"Elevation"   
+
+					// RESISTANCE PARAMETERS
+					"Resistance.alpha" 							0.005
+        			"Resistance.theta" 							0.85
+       	 			"Resistance.d"  							1.1
+        			"Resistance.e"							  	0.63
+     	 			"Resistance.T1"							  	"-5.0"
+        			"Resistance.T0"							  	20.0
+        			"Resistance.Th"							  	45.0
+        			"Resistance.f"							 	"-40.0E-6"
+        			"Resistance.thetaW"							0.205
+        			"Resistance.thetaC"							0.30        
+
+        			// READERS
+					"readerAirTemperature.file"          		"${home}/data/${site}_Temp.csv"
+					"readerAirTemperature.idfield"       		"val"  
+					"readerAirTemperature.tStart"        		"${startDate}"
+					"readerAirTemperature.tEnd"					"${endDate}"
+					"readerAirTemperature.tTimestep"			"${timestep}" 
+					"readerAirTemperature.fileNovalue"   		"-9999.0"		
+								                 
+					"readerWindVelocity.file"         			"${home}/data/${site}_Wind.csv" 
+					"readerWindVelocity.idfield"				"val"  
+					"readerWindVelocity.tStart"       			"${startDate}"
+					"readerWindVelocity.tEnd"         			"${endDate}"
+					"readerWindVelocity.tTimestep"    			"${timestep}"
+					"readerWindVelocity.fileNovalue"  			"-9999.0"        
+						
+					"readerRelativeHumidity.file"         		"${home}/data/${site}_RH.csv"
+					"readerRelativeHumidity.idfield"      		"val"  
+					"readerRelativeHumidity.tStart"       		"${startDate}"
+					"readerRelativeHumidity.tEnd"         		"${endDate}"
+					"readerRelativeHumidity.tTimestep"    		"${timestep}"
+					"readerRelativeHumidity.fileNovalue"  		"-9999.0"	
+						
+					"readerShortWaveDirectRadiation.file"		"${home}/data/${site}_SwDirect.csv" 
+					"readerShortWaveDirectRadiation.idfield"	"val"
+					"readerShortWaveDirectRadiation.tStart"		"${startDate}"
+					"readerShortWaveDirectRadiation.tEnd"		"${endDate}"
+					"readerShortWaveDirectRadiation.tTimestep"	"${timestep}"
+					"readerShortWaveDirectRadiation.fileNovalue""-9999.0"				
+						
+					"readerShortWaveDiffuseRadiation.file"		"${home}/data/${site}_null.csv" 
+					"readerShortWaveDiffuseRadiation.idfield"	"val"
+					"readerShortWaveDiffuseRadiation.tStart"	"${startDate}"
+					"readerShortWaveDiffuseRadiation.tEnd"		"${endDate}"
+					"readerShortWaveDiffuseRadiation.tTimestep"	"${timestep}"
+					"readerShortWaveDiffuseRadiation.fileNovalue""-9999.0"				
+						
+					"readerLongWaveRadiation.file"        		"${home}/data/${site}_LWDown.csv" 
+					"readerLongWaveRadiation.idfield"     		"val"
+					"readerLongWaveRadiation.tStart"      		"${startDate}"
+					"readerLongWaveRadiation.tEnd"        		"${endDate}"
+					"readerLongWaveRadiation.tTimestep"   		"${timestep}"  
+					"readerLongWaveRadiation.fileNovalue" 		"-9999.0"
+						
+					"readerAtmosphericPressure.file"        	"${home}/data/${site}_Pres.csv" 
+					"readerAtmosphericPressure.idfield"     	"val"  
+					"readerAtmosphericPressure.tStart"      	"${startDate}"
+					"readerAtmosphericPressure.tEnd"        	"${endDate}"
+					"readerAtmosphericPressure.tTimestep"   	"${timestep}"
+					"readerAtmosphericPressure.fileNovalue" 	"-9999.0"       
+						
+					"readerLeafAreaIndex.file"         			"${home}/data/${site}_Lai.csv" 
+					"readerLeafAreaIndex.idfield"      			"val"  
+					"readerLeafAreaIndex.tStart"       			"${startDate}"
+					"readerLeafAreaIndex.tEnd"         			"${endDate}"
+					"readerLeafAreaIndex.tTimestep"    			"${timestep}"
+					"readerLeafAreaIndex.fileNovalue"  			"-9999.0"        	
+					
+					"readerSoilMosture.file"         			"${home}/data/${site}_SWC.csv" 
+					"readerSoilMosture.idfield"      			"val"  
+					"readerSoilMosture.tStart"       			"${startDate}"
+					"readerSoilMosture.tEnd"         			"${endDate}"
+					"readerSoilMosture.tTimestep"    			"${timestep}"
+					"readerSoilMosture.fileNovalue"  			"-9999.0"        		 		
+						
+					"readerSoilHeatFlux.file"         			"${home}/data/${site}_GHF.csv" 
+					"readerSoilHeatFlux.idfield"      			"val"  
+					"readerSoilHeatFlux.tStart"       			"${startDate}"
+					"readerSoilHeatFlux.tEnd"         			"${endDate}"
+					"readerSoilHeatFlux.tTimestep"    			"${timestep}"
+					"readerSoilHeatFlux.fileNovalue"  			"-9999.0"           							
+								
+					// WRITERS                  		
+					"writerLatentHeat.file"        				"${home}/output/${site}_ET_SO_stress.csv" 
+					"writerLatentHeat.tStart"       			"${startDate}"
+					"writerLatentHeat.tTimestep"   				"${timestep}"
+					
+					"writerLatentHeatShade.file"        		"${home}/output/ET_${site}_Shadow.csv" 
+					"writerLatentHeatShade.tStart"       		"${startDate}"
+					"writerLatentHeatShade.tTimestep"   		"${timestep}"
+								        		        
+					"writerTranspiration.file"        			"${home}/output/Transpiration_${site}.csv" 
+					"writerTranspiration.tStart"       			"${startDate}"
+					"writerTranspiration.tTimestep"				"${timestep}"
+								        	
+					"writerLeafTemperature.file"				"${home}/output/LT_${site}.csv" 
+					"writerLeafTemperature.tStart"				"${startDate}"
+					"writerLeafTemperature.tTimestep"			"${timestep}"       
+					
+					"writerLeafTemperatureShade.file"			"${home}/output/LT_${site}_Shade.csv" 
+					"writerLeafTemperatureShade.tStart"			"${startDate}"
+					"writerLeafTemperatureShade.tTimestep"		"${timestep}"       
+					
+					"writerRadiation.file"						"${home}/output/RadiationCanopySun.csv" 
+					"writerRadiation.tStart"					"${startDate}"
+					"writerRadiation.tTimestep"					"${timestep}"       
+					
+					"writerRadiationShade.file"					"${home}/output/RadiationCanopyShaded.csv" 
+					"writerRadiationShade.tStart"				"${startDate}"
+					"writerRadiationShade.tTimestep"			"${timestep}"       
+					
+					"writerCanopy.file"							"${home}/output/canopy.csv" 
+					"writerCanopy.tStart"						"${startDate}"
+					"writerCanopy.tTimestep"					"${timestep}"       
+					
+					"writerSensibleHeat.file"					"${home}/output/HL_${site}_noStress.csv" 
+					"writerSensibleHeat.tStart"					"${startDate}"
+					"writerSensibleHeat.tTimestep"				"${timestep}"       
+					
+					"writerSensibleHeatShade.file"				"${home}/output/HL_${site}_Shade.csv" 
+					"writerSensibleHeatShade.tStart"			"${startDate}"
+					"writerSensibleHeatShade.tTimestep"			"${timestep}"    
+				}
+				connect {
+					"readerDem.outRaster"						"Transpiration.inDem"    
+					"readerCentroids.geodata"					"Transpiration.inCentroids"		
+
+					"readerAirTemperature.outData"				"Resistance.inAirTemperature"
+					"readerRelativeHumidity.outData"  			"Resistance.inRelativeHumidity"
+					"readerShortWaveDirectRadiation.outData"	"Resistance.inShortWaveRadiationDirect"
+					"readerAtmosphericPressure.outData"			"Resistance.inAtmosphericPressure"
+					"readerSoilMosture.outData"					"Resistance.inSoilMosture"	
+					"readerCentroids.geodata"					"Resistance.inCentroids"
+
+					"readerAirTemperature.outData"				"Transpiration.inAirTemperature"
+					"readerWindVelocity.outData"		 		"Transpiration.inWindVelocity"
+					"readerRelativeHumidity.outData"		 	"Transpiration.inRelativeHumidity"
+					"readerShortWaveDirectRadiation.outData"	"Transpiration.inShortWaveRadiationDirect"
+					"readerShortWaveDiffuseRadiation.outData"	"Transpiration.inShortWaveRadiationDiffuse"
+					"readerLongWaveRadiation.outData"			"Transpiration.inLongWaveRadiation"
+					"readerAtmosphericPressure.outData"			"Transpiration.inAtmosphericPressure"
+					"readerLeafAreaIndex.outData"				"Transpiration.inLeafAreaIndex"	
+					"readerSoilHeatFlux.outData"				"Transpiration.inSoilFlux"	
+
+					"Transpiration.outLatentHeat"				"writerLatentHeat.inData"	        			        	
+					"Transpiration.outLatentHeatShade"			"writerLatentHeatShade.inData"	        			        	
+					"Transpiration.outTranspiration"			"writerTranspiration.inData"
+					"Transpiration.outSensibleHeat"				"writerSensibleHeat.inData"
+					"Transpiration.outSensibleHeatShade"		"writerSensibleHeatShade.inData"
+					"Transpiration.outLeafTemperature"			"writerLeafTemperature.inData"
+					"Transpiration.outLeafTemperatureShade"		"writerLeafTemperatureShade.inData"
+					"Transpiration.outRadiation"				"writerRadiation.inData"
+					"Transpiration.outRadiationShade"			"writerRadiationShade.inData"
+					"Transpiration.outCanopy"					"writerCanopy.inData"			
+					}
+				}	
+				rounds 1		
+		run_start												"2015-07-21 00:00"
+		calibration_start										"2015-07-21 00:00"
+		run_end													"2015-07-21 23:00"
+
+				// step definitions
+				step {
+					parameter {
+						"Resistance_alpha" 						(lower:0.0, upper:0.05,calib_strategy:MEAN)
+						"Resistance_theta" 						(lower:0.0, upper:1.5,calib_strategy:MEAN)	
+       	 				"Resistance_d"  						(lower:0.1, upper:1.5,calib_strategy:MEAN)
+        				"Resistance_e"							(lower:0.0, upper:1.0,calib_strategy:MEAN) 
+     	 				"Resistance_T1"							(lower:"-5.0", upper:10.0,calib_strategy:MEAN) 	
+        				"Resistance_T0"							(lower:15.0, upper:25.0,calib_strategy:MEAN) 
+        				"Resistance_Th"							(lower:30.0, upper:45.0,calib_strategy:MEAN)
+        				"Resistance_f"							(lower:"-40.0E-5", upper:"-40.0E-7",calib_strategy:MEAN)
+        				"Resistance_thetaW"						(lower:0.0, upper:0.3,calib_strategy:MEAN)
+        				"Resistance_thetaC"						(lower:0.3, upper:1.0,calib_strategy:MEAN)	
+					}
+					objfunc(method:RMSE, timestep:RAW,invalidDataValue:-9999.0) {
+						sim(file:"${home}//output/${site}_ET_SO_stress.csv", table:"table", column:"value_1")
+						obs(file:"$oms_prj/data/${site}_El.csv", table:"table", column:"val_1")
+					}
+					max_exec 3
+				}
+			}
+		)
+
+
+

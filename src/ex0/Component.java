@@ -1,5 +1,5 @@
 /*
- * $Id: Component.java febe66e0ca85 2013-01-11 odavid@colostate.edu $
+ * $Id$
  * 
  * This file is part of the Object Modeling System (OMS),
  * 2007-2011, Olaf David, Colorado State University

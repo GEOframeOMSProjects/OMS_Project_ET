@@ -4,7 +4,7 @@
     <configuration>
         <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
             <!-- Do not use Project Properties customizer when editing this file manually. -->
-            <name>OMS_Project_SNOW2</name>
+            <name>MaziaCaldaro</name>
             <properties>
                 <property-file>.oms/project.properties</property-file>
             </properties>

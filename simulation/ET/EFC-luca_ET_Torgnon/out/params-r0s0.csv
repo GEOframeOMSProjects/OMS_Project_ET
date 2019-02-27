@@ -1,0 +1,177 @@
+@S,Parameter
+ round,0
+ step,0
+ step_params,
+ calibration_start,Tue Jan 01 00:00:00 CET 2013
+ luca_name,EFC-luca_ET_Torgnon
+
+@P,readerDataTemperature_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_Temp.csv
+
+@P,readerDataTemperature_idfield,val
+
+@P,readerDataTemperature_tStart,2013-01-01 00:00
+
+@P,readerDataTemperature_tEnd,2018-12-31 23:30
+
+@P,readerDataTemperature_tTimestep,30
+
+@P,readerDataTemperature_fileNovalue,-9999.0
+
+@P,readerDataSoilMosture_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_SWC.csv
+
+@P,readerDataSoilMosture_idfield,val
+
+@P,readerDataSoilMosture_tStart,2013-01-01 00:00
+
+@P,readerDataSoilMosture_tEnd,2018-12-31 23:30
+
+@P,readerDataSoilMosture_tTimestep,30
+
+@P,readerDataSoilMosture_fileNovalue,-9999.0
+
+@P,Transpiration_doHourly,true
+
+@P,Transpiration_typeOfTerrainCover,Grassland
+
+@P,Transpiration_temporalStep,30
+
+@P,Transpiration_doFullPrint,true
+
+@P,Resistance_alpha,0.005
+
+@P,Resistance_theta,0.85
+
+@P,Resistance_d,1.1
+
+@P,Resistance_e,0.63
+
+@P,Resistance_T1,-5.0
+
+@P,Resistance_T0,20.0
+
+@P,Resistance_Th,45.0
+
+@P,Resistance_f,-40.0E-6
+
+@P,Resistance_thetaW,0.205
+
+@P,Resistance_thetaC,0.30
+
+@P,Transpiration_stressSun,1.0
+
+@P,Transpiration_tStartDate,2013-01-01 00:00
+
+@P,readerDem_file,/home/drugo/Sim/torgonMaziaViote/data/DemTorgnon.tif
+
+@P,readerDataWind_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_Wind.csv
+
+@P,readerDataWind_idfield,val
+
+@P,readerDataWind_tStart,2013-01-01 00:00
+
+@P,readerDataWind_tEnd,2018-12-31 23:30
+
+@P,readerDataWind_tTimestep,30
+
+@P,readerDataWind_fileNovalue,-9999.0
+
+@P,readerDataHumidity_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_RH.csv
+
+@P,readerDataHumidity_idfield,val
+
+@P,readerDataHumidity_tStart,2013-01-01 00:00
+
+@P,readerDataHumidity_tEnd,2018-12-31 23:30
+
+@P,readerDataHumidity_tTimestep,30
+
+@P,readerDataHumidity_fileNovalue,-9999.0
+
+@P,readerDataShortWaveDirect_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_SwDirect.csv
+
+@P,readerDataShortWaveDirect_idfield,val
+
+@P,readerDataShortWaveDirect_tStart,2013-01-01 00:00
+
+@P,readerDataShortWaveDirect_tEnd,2018-12-31 23:30
+
+@P,readerDataShortWaveDirect_tTimestep,30
+
+@P,readerDataShortWaveDirect_fileNovalue,-9999.0
+
+@P,readerDataShortWaveDiffuse_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_null.csv
+
+@P,readerDataShortWaveDiffuse_idfield,val
+
+@P,readerDataShortWaveDiffuse_tStart,2013-01-01 00:00
+
+@P,readerDataShortWaveDiffuse_tEnd,2018-12-31 23:30
+
+@P,readerDataShortWaveDiffuse_tTimestep,30
+
+@P,readerDataShortWaveDiffuse_fileNovalue,-9999.0
+
+@P,readerDataLongWave_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_null.csv
+
+@P,readerDataLongWave_idfield,val
+
+@P,readerDataLongWave_tStart,2013-01-01 00:00
+
+@P,readerDataLongWave_tEnd,2018-12-31 23:30
+
+@P,readerDataLongWave_tTimestep,30
+
+@P,readerDataLongWave_fileNovalue,-9999.0
+
+@P,readerDataPressure_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_Pres.csv
+
+@P,readerDataPressure_idfield,val
+
+@P,readerDataPressure_tStart,2013-01-01 00:00
+
+@P,readerDataPressure_tEnd,2018-12-31 23:30
+
+@P,readerDataPressure_tTimestep,30
+
+@P,readerDataPressure_fileNovalue,-9999.0
+
+@P,readerDataLeafAreaIndex_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_Lai.csv
+
+@P,readerDataLeafAreaIndex_idfield,val
+
+@P,readerDataLeafAreaIndex_tStart,2013-01-01 00:00
+
+@P,readerDataLeafAreaIndex_tEnd,2018-12-31 23:30
+
+@P,readerDataLeafAreaIndex_tTimestep,30
+
+@P,readerDataLeafAreaIndex_fileNovalue,-9999.0
+
+@P,readerDataSoilHeatFlux_file,/home/drugo/Sim/torgonMaziaViote/data/Torgnon/Torgnon_GHF.csv
+
+@P,readerDataSoilHeatFlux_idfield,val
+
+@P,readerDataSoilHeatFlux_tStart,2013-01-01 00:00
+
+@P,readerDataSoilHeatFlux_tEnd,2018-12-31 23:30
+
+@P,readerDataSoilHeatFlux_tTimestep,30
+
+@P,readerDataSoilHeatFlux_fileNovalue,-9999.0
+
+@P,readerCentroids_file,/home/drugo/Sim/torgonMaziaViote/data/Stations.shp
+
+@P,Transpiration_idCentroids,id
+
+@P,Transpiration_centroidElevation,Elevation
+
+@P,Resistance_idCentroids,id
+
+@P,Resistance_centroidElevation,Elevation
+
+@P,writerLatentHeatSun_file,/home/drugo/Sim/torgonMaziaViote/output/Torgnon_ET_SO_stress.csv
+
+@P,writerLatentHeatSun_tStart,2013-01-01 00:00
+
+@P,writerLatentHeatSun_tTimestep,30
+

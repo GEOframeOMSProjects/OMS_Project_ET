@@ -1,63 +1,78 @@
 import static oms3.SimBuilder.instance as OMS3
 def home = oms_prj
 
-//def startDate	=	"2009-10-02 01:00"
-//def endDate		=	"2016-01-11 07:00"
-//def site = "Mazia_B2_irr"
-
-def startDate	=	"2013-01-01 01:00"
-def endDate		=	"2016-01-11 07:00"
-def site = "Caldaro"
-
+def startDate = "2015-07-21 00:00"
+def endDate = "2015-07-21 23:00"
+def site = "Mazia"
 def timestep = 60
 OMS3.sim {
 	resource "$oms_prj/lib"    
-	model(while:"reader_data_temp.doProcess") {
+	model(while:"readerAirTemperature.doProcess") {
 		components {
-			"reader_data_temp"            		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
-			"reader_data_rad"             		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
-			"readerPressure"             		"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
-			"PTEtp"                       		"etpPointCase.OmsPriestleyTaylorEtpModel"     
-			"writer_etp"						"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"      			         
+			"readerAirTemperature"			"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+			"readerNetRadiation"            "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+			"readerAtmosphericPressure"     "org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"
+			"readerSoilHeatFlux"          	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorReader"	
+			"priestleyTaylor"               "etpPointCase.OmsPriestleyTaylor"     
+			"writerLatentHeatPT"			"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"      
+			"writerEvapotranspirationPT"	"org.jgrasstools.gears.io.timedependent.OmsTimeSeriesIteratorWriter"      			         
 			}  
 			parameter{        
-				"reader_data_temp.file"			"${home}/data/${site}/${site}_Temp.csv"
-				"reader_data_temp.idfield"      "val"  
-				"reader_data_temp.tStart"		"${startDate}"
-				"reader_data_temp.tEnd"			"${endDate}"
-				"reader_data_temp.tTimestep"	"${timestep}"
-				"reader_data_temp.fileNovalue"	"-9999"        
 				
-				"reader_data_rad.file"          "${home}/data/${site}/${site}_Net.csv" 
-				"reader_data_rad.idfield"      	"val"
-				"reader_data_rad.tStart"        "${startDate}"
-				"reader_data_rad.tEnd"			"${endDate}"
-				"reader_data_rad.tTimestep"		"${timestep}"
-				"reader_data_rad.fileNovalue"	"-9999"	
+				// PARAMETERS
+				"priestleyTaylor.alpha"						1.26
+		        "priestleyTaylor.soilFluxParameterDay"		0.35
+		        "priestleyTaylor.soilFluxParameterNight"	0.75
+        		"priestleyTaylor.doHourly"					true
+        		"priestleyTaylor.defaultAtmosphericPressure"101.3
+		        "priestleyTaylor.temporalStep"				"${timestep}"
+        		"priestleyTaylor.tStartDate"				"${startDate}"
+        		
+        		// READERS
+				"readerAirTemperature.file"					"${home}/data/${site}_Temp.csv"
+				"readerAirTemperature.idfield"      		"val"  
+				"readerAirTemperature.tStart"				"${startDate}"
+				"readerAirTemperature.tEnd"					"${endDate}"
+				"readerAirTemperature.tTimestep"			"${timestep}"
+				"readerAirTemperature.fileNovalue"			"-9999"        
 				
-				"readerPressure.file"         "${home}/data/${site}/${site}_Pres.csv"
-				"readerPressure.idfield"      "val"  
-				"readerPressure.tStart"       "${startDate}"
-				"readerPressure.tEnd"         "${endDate}"
-				"readerPressure.tTimestep"    "${timestep}"
-				"readerPressure.fileNovalue"  "-9999.0"                               
+				"readerNetRadiation.file"          			"${home}/data/${site}_Net.csv"
+				"readerNetRadiation.idfield"      			"val"
+				"readerNetRadiation.tStart"        			"${startDate}"
+				"readerNetRadiation.tEnd"					"${endDate}"
+				"readerNetRadiation.tTimestep"				"${timestep}"
+				"readerNetRadiation.fileNovalue"			"-9999"	
+			
+				"readerAtmosphericPressure.file"    		"${home}/data/${site}_Pres.csv"
+				"readerAtmosphericPressure.idfield"     	"val"  
+				"readerAtmosphericPressure.tStart"      	"${startDate}"
+				"readerAtmosphericPressure.tEnd"        	"${endDate}"
+				"readerAtmosphericPressure.tTimestep"   	"${timestep}"
+				"readerAtmosphericPressure.fileNovalue" 	"-9999.0"       
 				
-				"PTEtp.defaultPressure"			101.3
-				"PTEtp.pAlpha"					1.26
-				"PTEtp.pGmorn"					0.0 
-				"PTEtp.pGnight"					0.0
-				"PTEtp.doHourly"				true            
+				"readerSoilHeatFlux.file"         			"${home}/data/${site}_GHF.csv" 
+				"readerSoilHeatFlux.idfield"      			"val"  
+				"readerSoilHeatFlux.tStart"       			"${startDate}"
+				"readerSoilHeatFlux.tEnd"         			"${endDate}"
+				"readerSoilHeatFlux.tTimestep"    			"${timestep}"
+				"readerSoilHeatFlux.fileNovalue"  			"-9999.0"                                                     
+			
+				// WRITERS
+				"writerLatentHeatPT.file"					"${home}/output/${site}_latentHeat_PT.csv" 
+				"writerLatentHeatPT.tStart"					"${startDate}"
+				"writerLatentHeatPT.tTimestep"				"${timestep}"
 				
-				"PTEtp.tStartDate"				"${startDate}"             
-				"writer_etp.file"				"${home}/output/Evapotraspirazione_Priestley_Taylor_${site}.csv" 
-				"writer_etp.tStart"				"${startDate}"
-				"writer_etp.tTimestep"			"${timestep}"
+				"writerEvapotranspirationPT.file"			"${home}/output/${site}_ET_PT.csv" 
+				"writerEvapotranspirationPT.tStart"			"${startDate}"
+				"writerEvapotranspirationPT.tTimestep"		"${timestep}"
 				}
 				connect {                
-					"reader_data_temp.outData"	"PTEtp.inTemp"
-					"reader_data_rad.outData"	"PTEtp.inNetradiation"
-					"readerPressure.outData"	"PTEtp.inPressure"	
-					"PTEtp.outPTEtp"			"writer_etp.inData"
+					"readerAirTemperature.outData"			"priestleyTaylor.inAirTemperature"
+					"readerNetRadiation.outData"			"priestleyTaylor.inNetRadiation"
+					"readerAtmosphericPressure.outData"		"priestleyTaylor.inAtmosphericPressure"	
+					"readerSoilHeatFlux.outData"			"priestleyTaylor.inSoilFlux"	
+					"priestleyTaylor.outLatentHeatPt"		"writerLatentHeatPT.inData"
+					"priestleyTaylor.outEvapotranspirationPt""writerEvapotranspirationPT.inData"
 					}					
 			}
 	}

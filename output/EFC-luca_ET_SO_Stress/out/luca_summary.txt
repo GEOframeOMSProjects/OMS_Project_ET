@@ -1,0 +1,389 @@
+************************************************
+*          Luca Calibration Summary            *
+************************************************
+
+# Rounds = 1
+# Steps = 1
+
+Input Information
+	Model Executable: null
+	Parameter File Name = null
+	Transpiration.doHourly = true
+	Transpiration.typeOfTerrainCover = Grassland
+	Transpiration.temporalStep = 60
+	Transpiration.doFullPrint = true
+	Transpiration.tStartDate = 2015-07-21 00:00
+	readerDem.file = /home/drugo/Sim/ETP/data/dem.tif
+	readerCentroids.file = /home/drugo/Sim/ETP/data/Stations.shp
+	Transpiration.idCentroids = id
+	Transpiration.centroidElevation = Elevation
+	Resistance.idCentroids = id
+	Resistance.centroidElevation = Elevation
+	Resistance.alpha = 0.005
+	Resistance.theta = 0.85
+	Resistance.d = 1.1
+	Resistance.e = 0.63
+	Resistance.T1 = -5.0
+	Resistance.T0 = 20.0
+	Resistance.Th = 45.0
+	Resistance.f = -40.0E-6
+	Resistance.thetaW = 0.205
+	Resistance.thetaC = 0.30
+	readerAirTemperature.file = /home/drugo/Sim/ETP/data/Mazia_Temp.csv
+	readerAirTemperature.idfield = val
+	readerAirTemperature.tStart = 2015-07-21 00:00
+	readerAirTemperature.tEnd = 2015-07-21 23:00
+	readerAirTemperature.tTimestep = 60
+	readerAirTemperature.fileNovalue = -9999.0
+	readerWindVelocity.file = /home/drugo/Sim/ETP/data/Mazia_Wind.csv
+	readerWindVelocity.idfield = val
+	readerWindVelocity.tStart = 2015-07-21 00:00
+	readerWindVelocity.tEnd = 2015-07-21 23:00
+	readerWindVelocity.tTimestep = 60
+	readerWindVelocity.fileNovalue = -9999.0
+	readerRelativeHumidity.file = /home/drugo/Sim/ETP/data/Mazia_RH.csv
+	readerRelativeHumidity.idfield = val
+	readerRelativeHumidity.tStart = 2015-07-21 00:00
+	readerRelativeHumidity.tEnd = 2015-07-21 23:00
+	readerRelativeHumidity.tTimestep = 60
+	readerRelativeHumidity.fileNovalue = -9999.0
+	readerShortWaveDirectRadiation.file = /home/drugo/Sim/ETP/data/Mazia_SwDirect.csv
+	readerShortWaveDirectRadiation.idfield = val
+	readerShortWaveDirectRadiation.tStart = 2015-07-21 00:00
+	readerShortWaveDirectRadiation.tEnd = 2015-07-21 23:00
+	readerShortWaveDirectRadiation.tTimestep = 60
+	readerShortWaveDirectRadiation.fileNovalue = -9999.0
+	readerShortWaveDiffuseRadiation.file = /home/drugo/Sim/ETP/data/Mazia_null.csv
+	readerShortWaveDiffuseRadiation.idfield = val
+	readerShortWaveDiffuseRadiation.tStart = 2015-07-21 00:00
+	readerShortWaveDiffuseRadiation.tEnd = 2015-07-21 23:00
+	readerShortWaveDiffuseRadiation.tTimestep = 60
+	readerShortWaveDiffuseRadiation.fileNovalue = -9999.0
+	readerLongWaveRadiation.file = /home/drugo/Sim/ETP/data/Mazia_LWDown.csv
+	readerLongWaveRadiation.idfield = val
+	readerLongWaveRadiation.tStart = 2015-07-21 00:00
+	readerLongWaveRadiation.tEnd = 2015-07-21 23:00
+	readerLongWaveRadiation.tTimestep = 60
+	readerLongWaveRadiation.fileNovalue = -9999.0
+	readerAtmosphericPressure.file = /home/drugo/Sim/ETP/data/Mazia_Pres.csv
+	readerAtmosphericPressure.idfield = val
+	readerAtmosphericPressure.tStart = 2015-07-21 00:00
+	readerAtmosphericPressure.tEnd = 2015-07-21 23:00
+	readerAtmosphericPressure.tTimestep = 60
+	readerAtmosphericPressure.fileNovalue = -9999.0
+	readerLeafAreaIndex.file = /home/drugo/Sim/ETP/data/Mazia_Lai.csv
+	readerLeafAreaIndex.idfield = val
+	readerLeafAreaIndex.tStart = 2015-07-21 00:00
+	readerLeafAreaIndex.tEnd = 2015-07-21 23:00
+	readerLeafAreaIndex.tTimestep = 60
+	readerLeafAreaIndex.fileNovalue = -9999.0
+	readerSoilMosture.file = /home/drugo/Sim/ETP/data/Mazia_SWC.csv
+	readerSoilMosture.idfield = val
+	readerSoilMosture.tStart = 2015-07-21 00:00
+	readerSoilMosture.tEnd = 2015-07-21 23:00
+	readerSoilMosture.tTimestep = 60
+	readerSoilMosture.fileNovalue = -9999.0
+	readerSoilHeatFlux.file = /home/drugo/Sim/ETP/data/Mazia_GHF.csv
+	readerSoilHeatFlux.idfield = val
+	readerSoilHeatFlux.tStart = 2015-07-21 00:00
+	readerSoilHeatFlux.tEnd = 2015-07-21 23:00
+	readerSoilHeatFlux.tTimestep = 60
+	readerSoilHeatFlux.fileNovalue = -9999.0
+	writerLatentHeat.file = /home/drugo/Sim/ETP/output/Mazia_ET_SO_stress.csv
+	writerLatentHeat.tStart = 2015-07-21 00:00
+	writerLatentHeat.tTimestep = 60
+	writerLatentHeatShade.file = /home/drugo/Sim/ETP/output/ET_Mazia_Shadow.csv
+	writerLatentHeatShade.tStart = 2015-07-21 00:00
+	writerLatentHeatShade.tTimestep = 60
+	writerTranspiration.file = /home/drugo/Sim/ETP/output/Transpiration_Mazia.csv
+	writerTranspiration.tStart = 2015-07-21 00:00
+	writerTranspiration.tTimestep = 60
+	writerLeafTemperature.file = /home/drugo/Sim/ETP/output/LT_Mazia.csv
+	writerLeafTemperature.tStart = 2015-07-21 00:00
+	writerLeafTemperature.tTimestep = 60
+	writerLeafTemperatureShade.file = /home/drugo/Sim/ETP/output/LT_Mazia_Shade.csv
+	writerLeafTemperatureShade.tStart = 2015-07-21 00:00
+	writerLeafTemperatureShade.tTimestep = 60
+	writerRadiation.file = /home/drugo/Sim/ETP/output/RadiationCanopySun.csv
+	writerRadiation.tStart = 2015-07-21 00:00
+	writerRadiation.tTimestep = 60
+	writerRadiationShade.file = /home/drugo/Sim/ETP/output/RadiationCanopyShaded.csv
+	writerRadiationShade.tStart = 2015-07-21 00:00
+	writerRadiationShade.tTimestep = 60
+	writerCanopy.file = /home/drugo/Sim/ETP/output/canopy.csv
+	writerCanopy.tStart = 2015-07-21 00:00
+	writerCanopy.tTimestep = 60
+	writerSensibleHeat.file = /home/drugo/Sim/ETP/output/HL_Mazia_noStress.csv
+	writerSensibleHeat.tStart = 2015-07-21 00:00
+	writerSensibleHeat.tTimestep = 60
+	writerSensibleHeatShade.file = /home/drugo/Sim/ETP/output/HL_Mazia_Shade.csv
+	writerSensibleHeatShade.tStart = 2015-07-21 00:00
+	writerSensibleHeatShade.tTimestep = 60
+
+Model Run Period  : 	July 21,2015 - July 21,2015
+Calibration Period: 	July 21,2015 - July 21,2015
+
+
+Output Information
+	Output Folder: /home/drugo/Sim/ETP/./output/EFC-luca_ET_SO_Stress/out
+
+-------------------------------
+Initial Setup for Step 1
+-------------------------------
+
+>>> Parameter Name: Resistance_alpha
+
+  mean  was used for calibration.
+  Lower Bound = 0.0		 Actual Lower Bound 0.0
+  Upper Bound = 0.05		 Actual Upper Bound 0.05000000000000071
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.005000		true
+	Mean	0.005000000000000782
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_theta
+
+  mean  was used for calibration.
+  Lower Bound = 0.0		 Actual Lower Bound 0.0
+  Upper Bound = 1.5		 Actual Upper Bound 1.5
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.850000		true
+	Mean	0.8499999999999996
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_d
+
+  mean  was used for calibration.
+  Lower Bound = 0.1		 Actual Lower Bound 0.09999999999999964
+  Upper Bound = 1.5		 Actual Upper Bound 1.5
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	1.100000		true
+	Mean	1.0999999999999996
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_e
+
+  mean  was used for calibration.
+  Lower Bound = 0.0		 Actual Lower Bound 0.0
+  Upper Bound = 1.0		 Actual Upper Bound 1.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.630000		true
+	Mean	0.6300000000000008
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_T1
+
+  mean  was used for calibration.
+  Lower Bound = -5.0		 Actual Lower Bound -5.0
+  Upper Bound = 10.0		 Actual Upper Bound 10.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	-5.000000		true
+	Mean	-5.0
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_T0
+
+  mean  was used for calibration.
+  Lower Bound = 15.0		 Actual Lower Bound 15.0
+  Upper Bound = 25.0		 Actual Upper Bound 25.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	20.000000		true
+	Mean	20.0
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_Th
+
+  mean  was used for calibration.
+  Lower Bound = 30.0		 Actual Lower Bound 30.0
+  Upper Bound = 45.0		 Actual Upper Bound 45.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	45.000000		true
+	Mean	45.0
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_f
+
+  mean  was used for calibration.
+  Lower Bound = -4.0E-4		 Actual Lower Bound -4.000000000008441E-4
+  Upper Bound = -4.0E-6		 Actual Upper Bound -4.000000000559112E-6
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	-0.000040		true
+	Mean	-4.000000000026205E-5
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_thetaW
+
+  mean  was used for calibration.
+  Lower Bound = 0.0		 Actual Lower Bound 0.0
+  Upper Bound = 0.3		 Actual Upper Bound 0.3000000000000007
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.205000		true
+	Mean	0.20500000000000007
+	Initial Parameter OF	186.32135288764573
+
+>>> Parameter Name: Resistance_thetaC
+
+  mean  was used for calibration.
+  Lower Bound = 0.3		 Actual Lower Bound 0.3000000000000007
+  Upper Bound = 1.0		 Actual Upper Bound 1.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.300000		true
+	Mean	0.3000000000000007
+	Initial Parameter OF	186.32135288764573
+
+>>> SCE Control Parameter Information
+	Number of complexes in the initial population: 2
+	Number of points in each complex: 21
+	Number of points in a sub-complex: 11
+	Number of evolution steps before shuffling: 21
+	Mininum number of complexes required: 1
+	Maximum number of model executions: 3
+	Shuffling loops in which the objective function value must change by given % before optimization is terminated: 5
+	Percentage for the objective function value: 0.01%
+
+>>> Objective Function (OF) Information
+	The number of objective functions: 1
+	-- OF #1 with weight = 1.0
+		The objective function is: MINIMIZED
+		Objective Function Type: rmse 
+		Time Step: raw
+		Period: Feb to Jan
+		Simulated Variable: value_1
+		Observed Variable: val_1
+
+
+
+********************************************
+ Calibrated Parameter Values
+********************************************
+
+
+-------------------------------
+Round 1 Step 1
+-------------------------------
+
+Objective Function Values for round 1 = 186.32135288764573
+>>> Parameter Name: Resistance_alpha
+
+Lower Bound = 0.0
+Upper Bound = 0.05
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.005000
+	Mean			0.005000000000000782
+>>> Parameter Name: Resistance_theta
+
+Lower Bound = 0.0
+Upper Bound = 1.5
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.850000
+	Mean			0.8499999999999996
+>>> Parameter Name: Resistance_d
+
+Lower Bound = 0.1
+Upper Bound = 1.5
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		1.100000
+	Mean			1.0999999999999996
+>>> Parameter Name: Resistance_e
+
+Lower Bound = 0.0
+Upper Bound = 1.0
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.630000
+	Mean			0.6300000000000008
+>>> Parameter Name: Resistance_T1
+
+Lower Bound = -5.0
+Upper Bound = 10.0
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		-5.000000
+	Mean			-5.0
+>>> Parameter Name: Resistance_T0
+
+Lower Bound = 15.0
+Upper Bound = 25.0
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		20.000000
+	Mean			20.0
+>>> Parameter Name: Resistance_Th
+
+Lower Bound = 30.0
+Upper Bound = 45.0
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		45.000000
+	Mean			45.0
+>>> Parameter Name: Resistance_f
+
+Lower Bound = -4.0E-4
+Upper Bound = -4.0E-6
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		-0.000040
+	Mean			-4.000000000026205E-5
+>>> Parameter Name: Resistance_thetaW
+
+Lower Bound = 0.0
+Upper Bound = 0.3
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.205000
+	Mean			0.20500000000000007
+>>> Parameter Name: Resistance_thetaC
+
+Lower Bound = 0.3
+Upper Bound = 1.0
+
+Number of iterations in Step = 3
+Parameter Values:
+	#		Round 0 data
+	0		0.300000
+	Mean			0.3000000000000007
+************************************************
+*  DONE.
+************************************************
+

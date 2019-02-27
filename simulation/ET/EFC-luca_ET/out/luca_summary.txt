@@ -1,0 +1,257 @@
+************************************************
+*          Luca Calibration Summary            *
+************************************************
+
+# Rounds = 1
+# Steps = 1
+
+Input Information
+	Model Executable: null
+	Parameter File Name = null
+	readerDataTemperature.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_Temp.csv
+	readerDataTemperature.idfield = val
+	readerDataTemperature.tStart = 2009-10-02 01:00
+	readerDataTemperature.tEnd = 2016-01-01 00:00
+	readerDataTemperature.tTimestep = 60
+	readerDataTemperature.fileNovalue = -9999.0
+	readerDataSoilMosture.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_SWC.csv
+	readerDataSoilMosture.idfield = val
+	readerDataSoilMosture.tStart = 2009-10-02 01:00
+	readerDataSoilMosture.tEnd = 2016-01-01 00:00
+	readerDataSoilMosture.tTimestep = 60
+	readerDataSoilMosture.fileNovalue = -9999.0
+	Transpiration.doHourly = true
+	Transpiration.typeOfTerrainCover = Grassland
+	Transpiration.temporalStep = 60
+	Transpiration.doFullPrint = true
+	Resistance.alpha = 0.005
+	Resistance.theta = 0.85
+	Resistance.d = 1.1
+	Resistance.e = 0.63
+	Resistance.T1 = -5.0
+	Resistance.T0 = 20.0
+	Resistance.Th = 45.0
+	Resistance.f = -40.0E-6
+	Resistance.thetaW = 0.205
+	Resistance.thetaC = 0.30
+	Transpiration.tStartDate = 2009-10-02 01:00
+	readerDem.file = /home/drugo/Sim/torgonMaziaViote/data/DemMazia.asc
+	readerDataWind.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_Wind.csv
+	readerDataWind.idfield = val
+	readerDataWind.tStart = 2009-10-02 01:00
+	readerDataWind.tEnd = 2016-01-01 00:00
+	readerDataWind.tTimestep = 60
+	readerDataWind.fileNovalue = -9999.0
+	readerDataHumidity.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_RH.csv
+	readerDataHumidity.idfield = val
+	readerDataHumidity.tStart = 2009-10-02 01:00
+	readerDataHumidity.tEnd = 2016-01-01 00:00
+	readerDataHumidity.tTimestep = 60
+	readerDataHumidity.fileNovalue = -9999.0
+	readerDataShortWaveDirect.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_SwDirect.csv
+	readerDataShortWaveDirect.idfield = val
+	readerDataShortWaveDirect.tStart = 2009-10-02 01:00
+	readerDataShortWaveDirect.tEnd = 2016-01-01 00:00
+	readerDataShortWaveDirect.tTimestep = 60
+	readerDataShortWaveDirect.fileNovalue = -9999.0
+	readerDataShortWaveDiffuse.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_null.csv
+	readerDataShortWaveDiffuse.idfield = val
+	readerDataShortWaveDiffuse.tStart = 2009-10-02 01:00
+	readerDataShortWaveDiffuse.tEnd = 2016-01-01 00:00
+	readerDataShortWaveDiffuse.tTimestep = 60
+	readerDataShortWaveDiffuse.fileNovalue = -9999.0
+	readerDataLongWave.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_null.csv
+	readerDataLongWave.idfield = val
+	readerDataLongWave.tStart = 2009-10-02 01:00
+	readerDataLongWave.tEnd = 2016-01-01 00:00
+	readerDataLongWave.tTimestep = 60
+	readerDataLongWave.fileNovalue = -9999.0
+	readerDataPressure.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_Pres.csv
+	readerDataPressure.idfield = val
+	readerDataPressure.tStart = 2009-10-02 01:00
+	readerDataPressure.tEnd = 2016-01-01 00:00
+	readerDataPressure.tTimestep = 60
+	readerDataPressure.fileNovalue = -9999.0
+	readerDataLeafAreaIndex.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_Lai.csv
+	readerDataLeafAreaIndex.idfield = val
+	readerDataLeafAreaIndex.tStart = 2009-10-02 01:00
+	readerDataLeafAreaIndex.tEnd = 2016-01-01 00:00
+	readerDataLeafAreaIndex.tTimestep = 60
+	readerDataLeafAreaIndex.fileNovalue = -9999.0
+	readerDataSoilHeatFlux.file = /home/drugo/Sim/torgonMaziaViote/data/Mazia/Mazia_GHF.csv
+	readerDataSoilHeatFlux.idfield = val
+	readerDataSoilHeatFlux.tStart = 2009-10-02 01:00
+	readerDataSoilHeatFlux.tEnd = 2016-01-01 00:00
+	readerDataSoilHeatFlux.tTimestep = 60
+	readerDataSoilHeatFlux.fileNovalue = -9999.0
+	readerCentroids.file = /home/drugo/Sim/torgonMaziaViote/data/Stations.shp
+	Transpiration.idCentroids = id
+	Transpiration.centroidElevation = Elevation
+	Resistance.idCentroids = id
+	Resistance.centroidElevation = Elevation
+	writerLatentHeatSun.file = /home/drugo/Sim/torgonMaziaViote/output/Mazia_ET_SO_stress.csv
+	writerLatentHeatSun.tStart = 2009-10-02 01:00
+	writerLatentHeatSun.tTimestep = 60
+	writerLatentHeatShadow.file = /home/drugo/Sim/torgonMaziaViote/output/ET_Mazia_Shadow.csv
+	writerLatentHeatShadow.tStart = 2009-10-02 01:00
+	writerLatentHeatShadow.tTimestep = 60
+	writerTranspiration.file = /home/drugo/Sim/torgonMaziaViote/output/Transpiration_Mazia.csv
+	writerTranspiration.tStart = 2009-10-02 01:00
+	writerTranspiration.tTimestep = 60
+	writerLeafTemperatureSun.file = /home/drugo/Sim/torgonMaziaViote/output/LT_Mazia_Sun.csv
+	writerLeafTemperatureSun.tStart = 2009-10-02 01:00
+	writerLeafTemperatureSun.tTimestep = 60
+	writerLeafTemperatureSh.file = /home/drugo/Sim/torgonMaziaViote/output/LT_Mazia_Sh.csv
+	writerLeafTemperatureSh.tStart = 2009-10-02 01:00
+	writerLeafTemperatureSh.tTimestep = 60
+	writerRadSun.file = /home/drugo/Sim/torgonMaziaViote/output/Rad_Sun.csv
+	writerRadSun.tStart = 2009-10-02 01:00
+	writerRadSun.tTimestep = 60
+	writerRadShadow.file = /home/drugo/Sim/torgonMaziaViote/output/Rad_Shadow.csv
+	writerRadShadow.tStart = 2009-10-02 01:00
+	writerRadShadow.tTimestep = 60
+	writerCanopy.file = /home/drugo/Sim/torgonMaziaViote/output/canopy_Sun.csv
+	writerCanopy.tStart = 2009-10-02 01:00
+	writerCanopy.tTimestep = 60
+	writerSensibleSun.file = /home/drugo/Sim/torgonMaziaViote/output/HL_Mazia_Sun_noStress.csv
+	writerSensibleSun.tStart = 2009-10-02 01:00
+	writerSensibleSun.tTimestep = 60
+	writerSensibleShadow.file = /home/drugo/Sim/torgonMaziaViote/output/HL_Mazia_Sh.csv
+	writerSensibleShadow.tStart = 2009-10-02 01:00
+	writerSensibleShadow.tTimestep = 60
+
+Model Run Period  : 	October 02,2009 - January 01,2016
+Calibration Period: 	October 02,2009 - January 01,2016
+
+
+Output Information
+	Output Folder: /home/drugo/Sim/torgonMaziaViote/./simulation/ET/EFC-luca_ET/out
+
+-------------------------------
+Initial Setup for Step 1
+-------------------------------
+
+>>> Parameter Name: Resistance_alpha
+
+  mean  was used for calibration.
+  Lower Bound = 0.0		 Actual Lower Bound 0.0
+  Upper Bound = 1.0		 Actual Upper Bound 1.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.005000		true
+	Mean	0.005000000000000782
+	Initial Parameter OF	-0.10977504351492229
+
+>>> Parameter Name: Resistance_theta
+
+  mean  was used for calibration.
+  Lower Bound = 0.0		 Actual Lower Bound 0.0
+  Upper Bound = 1.5		 Actual Upper Bound 1.5
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.850000		true
+	Mean	0.8499999999999996
+	Initial Parameter OF	-0.10977504351492229
+
+>>> Parameter Name: Resistance_thetaW
+
+  mean  was used for calibration.
+  Lower Bound = 0.0		 Actual Lower Bound 0.0
+  Upper Bound = 0.5		 Actual Upper Bound 0.5
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.205000		true
+	Mean	0.20500000000000007
+	Initial Parameter OF	-0.10977504351492229
+
+>>> Parameter Name: Resistance_thetaC
+
+  mean  was used for calibration.
+  Lower Bound = 0.2		 Actual Lower Bound 0.1999999999999993
+  Upper Bound = 1.0		 Actual Upper Bound 1.0
+
+  Parameter Values:
+	#	init value		calibrated?
+	0	0.300000		true
+	Mean	0.3000000000000007
+	Initial Parameter OF	-0.10977504351492229
+
+>>> SCE Control Parameter Information
+	Number of complexes in the initial population: 2
+	Number of points in each complex: 9
+	Number of points in a sub-complex: 5
+	Number of evolution steps before shuffling: 9
+	Mininum number of complexes required: 1
+	Maximum number of model executions: 5
+	Shuffling loops in which the objective function value must change by given % before optimization is terminated: 5
+	Percentage for the objective function value: 0.01%
+
+>>> Objective Function (OF) Information
+	The number of objective functions: 1
+	-- OF #1 with weight = 1.0
+		The objective function is: MAXIMIZED
+		Objective Function Type: kge 
+		Time Step: raw
+		Period: Feb to Jan
+		Simulated Variable: value_1
+		Observed Variable: val_1
+
+
+
+********************************************
+ Calibrated Parameter Values
+********************************************
+
+
+-------------------------------
+Round 1 Step 1
+-------------------------------
+
+Objective Function Values for round 1 = 4.9E-324
+>>> Parameter Name: Resistance_alpha
+
+Lower Bound = 0.0
+Upper Bound = 1.0
+
+Number of iterations in Step = 5
+Parameter Values:
+	#		Round 0 data
+	0		0.665162
+	Mean			0.665161856024028
+>>> Parameter Name: Resistance_theta
+
+Lower Bound = 0.0
+Upper Bound = 1.5
+
+Number of iterations in Step = 5
+Parameter Values:
+	#		Round 0 data
+	0		0.898673
+	Mean			0.8986732203079484
+>>> Parameter Name: Resistance_thetaW
+
+Lower Bound = 0.0
+Upper Bound = 0.5
+
+Number of iterations in Step = 5
+Parameter Values:
+	#		Round 0 data
+	0		0.407781
+	Mean			0.4077811765316621
+>>> Parameter Name: Resistance_thetaC
+
+Lower Bound = 0.2
+Upper Bound = 1.0
+
+Number of iterations in Step = 5
+Parameter Values:
+	#		Round 0 data
+	0		0.813125
+	Mean			0.813124529574548
+************************************************
+*  DONE.
+************************************************
+

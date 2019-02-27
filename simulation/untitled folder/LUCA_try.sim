@@ -1,0 +1,63 @@
+import static oms3.SimBuilder.instance as OMS3
+import static oms3.SimBuilder.*
+def site = "Torgnon"
+def home = oms_prj
+
+luca = OMS3.luca_run(name:"EFC-luca_ET",
+    {
+    outputstrategy(dir: "./simulation/ET/", scheme:SIMPLE)
+
+ model() {
+   components {
+   }     
+ }    
+    rounds 1
+
+    run_start          "2013-01-01 00:00"
+    calibration_start  "2013-01-01 00:00"
+    run_end            "2018-12-31 23:30"
+
+    // step definitions
+    step {
+        parameter {
+        
+                "Resistance.alpha" 	0.005	(lower:0.0, upper:1.0,calib_strategy:MEAN) //0.005
+        		"Resistance.theta" 	0.85	(lower:0.0, upper:1.5,calib_strategy:MEAN) // 	0.85
+       	 		"Resistance.d"  	1.1		(lower:0.0, upper:2.5,calib_strategy:MEAN) //  	1.1
+        		"Resistance.e"  	0.63	(lower:0.0, upper:1.5,calib_strategy:MEAN) //  	0.63
+     	
+        		"Resistance.T1"  	"-5.0"	(lower:"-10.0", upper:10,calib_strategy:MEAN) //  	"-5.0"
+        		"Resistance.T0"  	20.0	(lower:10.0, upper:30.0,calib_strategy:MEAN)  // 	20.0
+        		"Resistance.Th"  	45.0	(lower:30.0, upper:55.0,calib_strategy:MEAN)  // 	45.0
+     	
+        		"Resistance.f" 		"-40.0E-6"(lower:"-40.0E-5", upper:"-40.0E-7",calib_strategy:MEAN)  //		"-40.0E-6"
+
+        		"Resistance.thetaW"	0.205	(lower:0.0, upper:0.5,calib_strategy:MEAN) //	0.205
+        		"Resistance.thetaC" 0.30	(lower:0.2, upper:1.0,calib_strategy:MEAN) // 0.30
+        	/*	alpha 			(lower:0.0, upper:1.0,calib_strategy:MEAN) //0.005
+        		theta    			(lower:0.0, upper:1.5,calib_strategy:MEAN) // 	0.85
+       	 		d					(lower:0.0, upper:2.5,calib_strategy:MEAN) //  	1.1
+        		e					(lower:0.0, upper:1.5,calib_strategy:MEAN) //  	0.63
+     	
+        		T1					(lower:"-10.0", upper:10,calib_strategy:MEAN) //  	"-5.0"
+        		T0					(lower:10.0, upper:30.0,calib_strategy:MEAN)  // 	20.0
+        		Th					(lower:30.0, upper:55.0,calib_strategy:MEAN)  // 	45.0
+     	
+        		f					(lower:"-40.0E-5", upper:"-40.0E-7",calib_strategy:MEAN)  //		"-40.0E-6"
+
+        		thetaW				(lower:0.0, upper:0.5,calib_strategy:MEAN) //	0.205
+        		thetaC				(lower:0.2, upper:1.0,calib_strategy:MEAN) // 0.30*/
+
+
+        }
+             objfunc(method:KGE, timestep:RAW,invalidDataValue:-9999) {
+        	sim(file:"${home}/output/${site}_ET_SO_no_stress.csv", table:"table", column:"value_5")
+            obs(file:"$oms_prj/data/${site}/${site}_El.csv", table:"table", column:"val_5")
+        }
+
+max_exec 10
+    }
+    }
+    )
+
+
